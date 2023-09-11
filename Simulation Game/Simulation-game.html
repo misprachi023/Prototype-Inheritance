@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Simulation Game</h1>
+</body>
+<script>
+     function BasicVehicle(brand,model,speed,fuelType)
+    {
+        this.Brand = brand;
+        this.Model = model;
+        this.Speed = speed;
+        this.fuelType = fuelType;
+        BasicVehicle.prototype.accerelate = function()
+        {
+            console.log(`Please Increase the Speed`);
+        }
+        BasicVehicle.prototype.brake = function()
+        {
+            console.log(`Please Decrease the Speed`);
+        }
+        BasicVehicle.prototype.refuel = function()
+        {
+            console.log(`Please refuel your Vehicle`);
+        }
+    }
+
+
+    let car = function(brand,model,speed,fuelType,numsOfWheel)
+    {
+        BasicVehicle.call(this,brand,model,speed,fuelType)
+        this.numsOfWheel = numsOfWheel;
+
+        car.prototype.honk = function()
+        {
+            console.log(`Honking Sound`);
+        }
+        Object.setPrototypeOf(car.prototype, BasicVehicle.prototype)
+    }
+
+    let Airplane = function(brand,model,speed,fuelType,numsOfWheel,numberOfEngines,hasLandingGear)
+    {
+        car.call(this,brand,model,speed,fuelType,numsOfWheel);
+        this.numberOfEngines = numberOfEngines;
+        this.hasLandingGear = hasLandingGear;
+
+        Airplane.prototype.takeOff = function()
+        {
+            console.log(`Please take care yourself plane is landing`);
+        }
+        Object.setPrototypeOf(Airplane.prototype, BasicVehicle.prototype)
+    }
+    
+    let QatarAirways = new Airplane("Qatar", "qat1250", 1200, "Aviation Kerosene", 6, 2, "Yes")
+    let vehicle = new BasicVehicle("Baleno", "Maruti", 420, "Petrol")
+    let Toyota = new car("Camry", "RAV4", 450, "Diesel", 4)
+
+    console.log(vehicle); 
+    vehicle.brake();
+    vehicle.accerelate();
+    console.log(QatarAirways);
+    QatarAirways.takeOff();
+    console.log(Toyota);
+    Toyota.honk();
+    
+
+    
+</script>
+</html>
