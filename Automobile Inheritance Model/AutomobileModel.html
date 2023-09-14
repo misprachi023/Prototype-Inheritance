@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Automobile Inheritance Model</h1>
+</body>
+ 
+<script> 
+
+function fourWheeler(brand, model, speed, engineCC, color)
+    {
+        this.Brand=brand;
+        this.Model=model;
+        this.Speed=speed;
+        this.engineCC=engineCC;
+        this.Color=color;
+        fourWheeler.prototype.accelerator=function()
+        {
+            console.log(`Increase the Speed`)
+        };
+        fourWheeler.prototype.brake=function()
+        {
+            console.log(`Decrease the Speed`)
+        }
+    }
+    let BMW=new fourWheeler("BMW", "X7", 420, "1200CC", "black");
+    function car(airBags, sunRoof)
+    {
+        this.basicVehicle=Object.create(BMW)
+        this.airBags=airBags;
+        this.sunRoof=sunRoof;
+        car.prototype.honk=function()
+        {
+         console.log(`honk sound`);
+        }
+    }
+    let bmwX7= new car(4, "Yes");
+    bmwX7.basicVehicle.accelerator();
+    bmwX7.basicVehicle.brake();
+    console.log(bmwX7.basicVehicle.Brand);
+    console.log(bmwX7.basicVehicle.Color);
+    console.log(bmwX7.basicVehicle.Model);
+    console.log(`this model has ${bmwX7.airBags} airbags and ${bmwX7.sunRoof}, the sunroof also has this model.`);
+    bmwX7.honk();
+    console.log(bmwX7);
+
+</script>
+</html>
+
+    
